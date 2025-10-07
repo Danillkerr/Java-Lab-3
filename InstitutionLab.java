@@ -34,7 +34,7 @@ public class InstitutionLab {
          * @param type            institution type (non-null)
          * @param yearEstablished year when institution was founded (positive)
          * @param studentCount    number of students (>= 0)
-         * @param rating          institution rating (0.0 .. 100.0 for example)
+         * @param rating          institution rating
          * @throws IllegalArgumentException if arguments are invalid
          */
         public EducationalInstitution(String name, String type, int yearEstablished, int studentCount, double rating) {
@@ -50,8 +50,8 @@ public class InstitutionLab {
             if (studentCount < 0) {
                 throw new IllegalArgumentException("studentCount must be non-negative.");
             }
-            if (Double.isNaN(rating) || Double.isInfinite(rating)) {
-                throw new IllegalArgumentException("rating must be a finite number.");
+            if (Double.isNaN(rating) || rating < 0.0 || rating > 10.0) {
+                throw new IllegalArgumentException("rating must be between 0.0 and 10.0.");
             }
 
             this.name = name;
